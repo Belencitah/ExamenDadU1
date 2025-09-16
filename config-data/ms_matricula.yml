@@ -3,21 +3,25 @@ spring:
     name: ms-matricula
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/ms_matricula
-    username: postgres
-    password: 123456
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ms_matricula?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-
-
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
 
 server:
   port: 7569
 
+# URL del ms-cursos para Feign (si no usas Eureka para resolverlo)
+cursos:
+  base-url: http://localhost:8081
 
 eureka:
   client:
